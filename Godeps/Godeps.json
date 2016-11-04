@@ -1,6 +1,7 @@
 {
-	"ImportPath": "authz",
-	"GoVersion": "go1.5.1",
+	"ImportPath": "github.com/twistlock/authz",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v75",
 	"Packages": [
 		"./..."
 	],
@@ -11,8 +12,13 @@
 			"Rev": "446d1c146faa8ed3f4218f056fcd165f6bcfda81"
 		},
 		{
+			"ImportPath": "github.com/Sirupsen/logrus/hooks/syslog",
+			"Comment": "v0.8.7-53-g446d1c1",
+			"Rev": "446d1c146faa8ed3f4218f056fcd165f6bcfda81"
+		},
+		{
 			"ImportPath": "github.com/codegangsta/cli",
-			"Comment": "1.2.0-139-g142e6cd",
+			"Comment": "v1.8.0-4-g142e6cd",
 			"Rev": "142e6cd241a4dfbf7f07a018f1f8225180018da4"
 		},
 		{
@@ -26,18 +32,13 @@
 			"Rev": "09ad1bbc5897e34c6e6d5612b0e1ba709ed28a7d"
 		},
 		{
-			"ImportPath": "github.com/docker/docker/vendor/src/github.com/Sirupsen/logrus",
-			"Comment": "v1.4.1-8928-g09ad1bb",
-			"Rev": "09ad1bbc5897e34c6e6d5612b0e1ba709ed28a7d"
-		},
-		{
 			"ImportPath": "github.com/docker/go-connections/sockets",
-			"Comment": "v0.1.1-2-g4e42727",
+			"Comment": "v0.1.2",
 			"Rev": "4e42727957c146776e5de9cec8c39e4059ed9f20"
 		},
 		{
 			"ImportPath": "github.com/docker/go-connections/tlsconfig",
-			"Comment": "v0.1.1-2-g4e42727",
+			"Comment": "v0.1.2",
 			"Rev": "4e42727957c146776e5de9cec8c39e4059ed9f20"
 		},
 		{
@@ -61,6 +62,10 @@
 		{
 			"ImportPath": "github.com/stretchr/testify/assert",
 			"Rev": "dab07ac62d4905d3e48d17dc549c684ac3b7c15a"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "c200b10b5d5e122be351b67af224adc6128af5bf"
 		}
 	]
 }
