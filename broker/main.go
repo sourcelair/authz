@@ -16,12 +16,12 @@ const (
 	auditorFlag     = "auditor"
 	auditorHookFlag = "auditor-hook"
 	policyFileFlag  = "policy-file"
-	stolosTokenFlag	= "stolos-token"
-	stolosURLFlag	= "stolos-url"
+	stolosTokenFlag = "stolos-token"
+	stolosURLFlag   = "stolos-url"
 )
 
 const (
-	authorizerBasic = "basic"
+	authorizerBasic  = "basic"
 	authorizerStolos = "stolos"
 )
 
@@ -109,7 +109,7 @@ func main() {
 			EnvVar: "STOLOS_URL",
 			Usage:  "The token to use for connecting to the Stolos API",
 		},
-		
+
 		cli.StringFlag{
 			Name:   stolosTokenFlag,
 			Value:  authz.AuditHookStdout,

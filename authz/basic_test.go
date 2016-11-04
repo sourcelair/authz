@@ -4,6 +4,7 @@ import (
 	"github.com/docker/docker/pkg/authorization"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
+	"os/exec"
 	"testing"
 )
 
@@ -52,6 +53,10 @@ func TestAuditRequestStdout(t *testing.T) {
 }
 
 func TestAuditRequestSyslog(t *testing.T) {
+	_, err := exec.LookPath("syslog")
+	if err != nil {
+		t.Skip("skipping, syslog does not exist.")
+	}
 	auditor := NewBasicAuditor(&BasicAuditorSettings{LogHook: AuditHookSyslog})
 	assert.NoError(t, auditor.AuditRequest(&authorization.Request{User: "user"}, &authorization.Response{Allow: true}))
 }

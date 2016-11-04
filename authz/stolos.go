@@ -24,10 +24,9 @@ type stolosAuthorizer struct {
 
 // BasicAuthorizerSettings provides settings for the basic authoerizer flow
 type StolosAuthorizerSettings struct {
-	StolosUrl string // StolosUrl indicates which URL to use as base when connecting to the API
+	StolosUrl   string // StolosUrl indicates which URL to use as base when connecting to the API
 	StolosToken string // StolosToken indicates the token to use when connecting to the API
 }
-
 
 // NewBasicAuthZAuthorizer creates a new basic authorizer
 func NewStolosAuthZAuthorizer(settings *StolosAuthorizerSettings) core.Authorizer {
@@ -55,7 +54,7 @@ func (f *stolosAuthorizer) AuthZReq(authZReq *authorization.Request) *authorizat
 	defer resp.Body.Close()
 
 	logrus.Debugf("Request success, status code: %d", resp.StatusCode)
-	if (resp.StatusCode != 200) {
+	if resp.StatusCode != 200 {
 		body, _ := ioutil.ReadAll(resp.Body)
 		logrus.Errorf("Response failed with status code: %d, body: %q", resp.StatusCode, body)
 		return &authorization.Response{Allow: false}
