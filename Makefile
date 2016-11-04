@@ -12,7 +12,6 @@ fmt:
 	gofmt -w $(SRCS)
 
 vet:
-	@-go get -v golang.org/x/tools/cmd/vet
 	$(foreach pkg,$(PKGS),go vet $(pkg);)
 
 lint:
@@ -30,3 +29,6 @@ test:  binary
 
 clean:
 	rm authz_broker
+
+dev:
+	docker run -it --volume=$(PWD):/go/src/github.com/twistlock/authz sourcelair/authz:binary sh
