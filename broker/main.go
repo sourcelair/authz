@@ -3,8 +3,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/codegangsta/cli"
 	"github.com/Sirupsen/logrus"
+	"github.com/codegangsta/cli"
 	"github.com/twistlock/authz/authz"
 	"github.com/twistlock/authz/core"
 	"os"
@@ -16,10 +16,13 @@ const (
 	auditorFlag     = "auditor"
 	auditorHookFlag = "auditor-hook"
 	policyFileFlag  = "policy-file"
+	stolosTokenFlag	= "stolos-token"
+	stolosURLFlag	= "stolos-url"
 )
 
 const (
 	authorizerBasic = "basic"
+	authorizerStolos = "stolos"
 )
 
 const (
@@ -43,6 +46,10 @@ func main() {
 		switch c.GlobalString(authorizerFlag) {
 		case authorizerBasic:
 			authZHandler = authz.NewBasicAuthZAuthorizer(&authz.BasicAuthorizerSettings{PolicyPath: c.GlobalString(policyFileFlag)})
+			break
+		case authorizerStolos:
+			authZHandler = authz.NewStolosAuthZAuthorizer(&authz.StolosAuthorizerSettings{StolosToken: c.GlobalString(stolosTokenFlag), StolosUrl: c.GlobalString(stolosURLFlag)})
+			break
 		default:
 			panic(fmt.Sprintf("Unknown authz handler %q", c.GlobalString(authorizerFlag)))
 		}
@@ -94,6 +101,20 @@ func main() {
 			Value:  authz.AuditHookStdout,
 			EnvVar: "AUDITOR-HOOK",
 			Usage:  "Defines the authz auditor hook type (log engine)",
+		},
+
+		cli.StringFlag{
+			Name:   stolosURLFlag,
+			Value:  authz.AuditHookStdout,
+			EnvVar: "STOLOS_URL",
+			Usage:  "The token to use for connecting to the Stolos API",
+		},
+		
+		cli.StringFlag{
+			Name:   stolosTokenFlag,
+			Value:  authz.AuditHookStdout,
+			EnvVar: "STOLOS_TOKEN",
+			Usage:  "The token to use for connecting to the Stolos API",
 		},
 	}
 
