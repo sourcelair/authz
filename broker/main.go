@@ -17,7 +17,7 @@ const (
 	auditorHookFlag = "auditor-hook"
 	policyFileFlag  = "policy-file"
 	stolosTokenFlag = "stolos-token"
-	stolosURLFlag   = "stolos-url"
+	StolosURLFlag   = "stolos-url"
 )
 
 const (
@@ -48,7 +48,7 @@ func main() {
 			authZHandler = authz.NewBasicAuthZAuthorizer(&authz.BasicAuthorizerSettings{PolicyPath: c.GlobalString(policyFileFlag)})
 			break
 		case authorizerStolos:
-			authZHandler = authz.NewStolosAuthZAuthorizer(&authz.StolosAuthorizerSettings{StolosToken: c.GlobalString(stolosTokenFlag), StolosUrl: c.GlobalString(stolosURLFlag)})
+			authZHandler = authz.NewStolosAuthZAuthorizer(&authz.StolosAuthorizerSettings{StolosToken: c.GlobalString(stolosTokenFlag), StolosURL: c.GlobalString(StolosURLFlag)})
 			break
 		default:
 			panic(fmt.Sprintf("Unknown authz handler %q", c.GlobalString(authorizerFlag)))
@@ -104,7 +104,7 @@ func main() {
 		},
 
 		cli.StringFlag{
-			Name:   stolosURLFlag,
+			Name:   StolosURLFlag,
 			Value:  authz.AuditHookStdout,
 			EnvVar: "STOLOS_URL",
 			Usage:  "The token to use for connecting to the Stolos API",

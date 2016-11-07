@@ -1,6 +1,6 @@
 .PHONY: all binary test image vet lint clean
 
-SRCS = $(shell git ls-files '*.go' | grep -v '^Godeps/')
+SRCS = $(shell git ls-files '*.go' | grep -v '^vendor/')
 PKGS = ./core/. ./broker/. ./authz/.
 
 default: binary
